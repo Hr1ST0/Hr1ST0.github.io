@@ -11,7 +11,7 @@
         name="viewport"
         content="width=device-width, initial-scale=1, maximum-scale=1"
       />
-      <title>First Blog |  欢迎你</title>
+      <title>CSS基本知识 |  欢迎你</title>
   <meta name="generator" content="hexo-theme-ayer">
       
       <link rel="shortcut icon" href="/favicon.ico" />
@@ -53,7 +53,7 @@
     <main class="content on">
       <section class="outer">
   <article
-  id="post-First-Blog"
+  id="post-CSS基本知识"
   class="article article-type-post"
   itemscope
   itemprop="blogPost"
@@ -64,7 +64,7 @@
     <header class="article-header">
        
 <h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  First Blog
+  CSS基本知识
 </h1>
  
 
@@ -72,15 +72,15 @@
     </header>
      
     <div class="article-meta">
-      <a href="/2024/07/28/First-Blog/" class="article-date">
-  <time datetime="2024-07-28T13:58:45.000Z" itemprop="datePublished">2024-07-28</time>
+      <a href="/2024/07/29/CSS%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AF%86/" class="article-date">
+  <time datetime="2024-07-28T16:04:56.000Z" itemprop="datePublished">2024-07-29</time>
 </a>   
 <div class="word_count">
     <span class="post-time">
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">722</span>
+            <span class="post-count">765</span>
         </span>
     </span>
 
@@ -89,7 +89,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> 阅读时长≈</span>
-            <span class="post-count">2 分钟</span>
+            <span class="post-count">3 分钟</span>
         </span>
     </span>
 </div>
@@ -104,40 +104,78 @@
   
     <div class="article-entry" itemprop="articleBody">
        
-  <h1 id="HTML-基础知识"><a href="#HTML-基础知识" class="headerlink" title="HTML 基础知识"></a>HTML 基础知识</h1><ol>
-<li>元素&#x3D;开始标记+内容+结束标记</li>
-<li>开始标记可以有属性：type</li>
-<li>所有页面都要有<HTML><HEAD><BODY>标签</li>
-<li>可以在 &#60;STYLE&#62;标签中定义CSS样式，&#60;STYLE&gt;标签要在&#60;HEAD&gt;元素里。</li>
-<li>可以在&#60;SCRIPT&gt;标签中定义JavaScript脚本，&#60;SCRIPT&gt;标签要在&#60;BODY&gt;元素里。</li>
-<li>字符实体：<br><em>假如说在HTML中需要显示&lt;和&gt;符号，则需要使用字符实体，如果要显示字符实体，在字符实体前面加上\即可。</em><blockquote>
-<p>&amp;lt; &amp;gt; &amp;amp; &amp;quot; &amp;apos;<br>&amp;lt; 小于号<br>&amp;gt; 大于号<br>&amp;amp; 与号<br>&amp;quot; 双引号</p>
-</blockquote>
-</li>
-</ol>
-<p>7.注释：&lt;!– 注释内容 –&gt;</p>
-<p>8.有序列表和无序列表：</p>
-<blockquote>
-<p> 有序列表：&lt;ol&gt;  &lt;li&gt;  &lt;&#x2F;li&gt;  &lt;&#x2F;ol&gt;<br>   无序列表：&lt;ul&gt;  &lt;li&gt;  &lt;&#x2F;li&gt;  &lt;&#x2F;ul&gt;</p>
-</blockquote>
-<p>9.文档类型定义&#60;!DOCTYPE html&gt;表明了现在的HTML标准</p>
-<blockquote>
-<p>&#60;META charset&#x3D;”UTF-8”&gt; 定义了文档的字符编码<br>  ALT属性是&#60;IMG&gt;元素中的必要元素，当图像不能显示时，显示ALT属性中的文本。</p>
-</blockquote>
-<h2 id="引用标签"><a href="#引用标签" class="headerlink" title="引用标签"></a>引用标签</h2><blockquote>
-<p>1.短引用&#60;q&gt;<br>  2.长引用&#60;blockquote&gt;</p>
-</blockquote>
-<h2 id="域名和URL"><a href="#域名和URL" class="headerlink" title="域名和URL"></a>域名和URL</h2><p>域名具有唯一性，唯一标识网站。</p>
+  <h2 id="常见的css代码："><a href="#常见的css代码：" class="headerlink" title="常见的css代码："></a>常见的css代码：</h2><pre><code>1. 字体大小：font-size
+2. 字体颜色：color
+3. 背景颜色：background-color
+4. 边框：border
+5. 边框颜色：border-color
+6. 边框宽度：border-width
+7. 边框样式：border-style
+8. 内边距：padding
+9. 外边距：margin
+10. 宽度：width
+11. 高度：height
+12. 文本对齐：text-align
+13. 行高：line-height
+14. 字体风格：font-style
+15. 字体粗细：font-weight
+16. 字体系列：font-family
+17. 文本装饰：text-decoration
+18. 文本换行：white-space
+19. 列表样式：list-style
+20. 链接样式：a:link, a:visited, a:hover, a:active
+21. 表格样式：table, th, td, caption, thead, tbody, tfoot
+22. 轮廓样式：outline
+23. 盒子模型：box-sizing
+24. 轮廓宽度：outline-width
+25. 轮廓颜色：outline-color
+26. 轮廓样式：outline-style
+27. 轮廓偏移：outline-offset
+28. 轮廓圆角：border-radius
+29. 背景图片：background-image
+30. 背景重复：background-repeat
+31. 背景位置：background-position
+32. 背景大小：background-size
+33. 字体大小调整：font-size-adjust
+34. 字体阴影：text-shadow
+35. 盒子阴影：box-shadow
+36. 文本方向：direction
+37. 文本装饰线：text-decoration-line
+38. 文本装饰颜色：text-decoration-color
+39. 文本装饰样式：text-decoration-style
+40. 文本缩进：text-indent
+41. 字体系列：font-variant
+42. 字体变形：font-stretch
+43. 字体平滑：font-smoothing
+44. 字体显示：font-display
+45. 字体粗细：font-weight
+46. 字体风格：font-style
+47. 字体系列：font-family
+48. 字体大小：font-size
+49. 字体颜色：color
+50. 背景颜色：background-color
+51. 边框：border
+
+在消息下面加一条线：borders-bottom: 1px solid #ccc;
+</code></pre>
+<h2 id="类的创建"><a href="#类的创建" class="headerlink" title="类的创建"></a>类的创建</h2><p>创建一个类有两步：</p>
 <blockquote>
 <ol>
-<li>URL叫做统一资源定位符，是域名和资源之间的链接，它由协议、网站名和资源的一个绝对地址组成。<br>例如，<a target="_blank" rel="noopener" href="https://www.google.com/search?q=hello+world">https://www.google.com/search?q=hello+world</a></li>
-<li>协议：https表示安全超文本传输协议，http表示超文本传输协议。</li>
-<li>网站名：<a target="_blank" rel="noopener" href="http://www.google.com表示域名为google.com的www子域名./">www.google.com表示域名为google.com的www子域名。</a></li>
-<li>资源：&#x2F;search?q&#x3D;hello+world表示搜索引擎搜索hello world。</li>
+<li>为HTML中的的元素增加一个class属性</li>
+<li>在CSS中定义一个类选择器，并应用到相应的元素上</li>
+<li>如果希望所有类中的元素都有同一种样式，可以这样写规则：<br>4.一个元素要加入多个类，可以用空格分隔：<br>&lt;p class&#x3D;”my-class my-other-class”&gt;This is a div with multiple classes&lt;&#x2F;p&gt;</li>
 </ol>
 </blockquote>
-<p>index.html和default.htm是网站的默认首页，如果指定一个目录而没有指定文件名，则默认访问这两个页面。</p>
-<h2 id="a标签"><a href="#a标签" class="headerlink" title="a标签"></a>a标签</h2><p>1.想从一个页面链接到另一个页面，使用&#60;A&gt;标签。<br>2.&#60;A&gt;元素的href属性指定了链接的目标文件，&#60;A&gt;元素的内容是链接的显示文本，文字和图像都可以作为连接的目标，当我们点击之后就会跳转到href指定的页面。对于网站中的其他页面，使用相对路径，而对于外部链接才使用URL.<br>3.如果链接的目标是当前页面的某个位置，可以使用锚点（anchor）来指定目标位置，使用&#60;A&gt;标签的name属性指定锚点的名称，然后在href属性中使用#加上锚点的名称来指定链接的目标位置。<br>4.父文件夹用..&#x2F;表示，子文件夹用.&#x2F;表示。<br>5.可以用id属性在页面中创建一个目标，使用#后面加上目标名，可以直接链接到那个地方</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.my-class</span> &#123;</span><br><span class="line">    <span class="comment">/* 样式 */</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span>&gt;</span></span><br><span class="line">	    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Class Example<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">        p.my-class &#123;</span><br><span class="line">            color: blue;</span><br><span class="line">        &#125;</span><br><span class="line">    <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">p</span> <span class="attr">class</span>=<span class="string">&quot;my-class&quot;</span>&gt;</span>This is a div with a class<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>CSS 只能对&lt;BODY&gt;里面的元素增加样式,也可以对&lt;BODY&gt;进行指定，子元素会通过继承获得该样式。如果子元素中有一些不打算继承的样式，可以直接在子元素上设置。</p>
+<p>对于img标签，CSS无法直接设置，但是可以设置img标签的父元素的样式，然后通过background-image属性来设置图片。</p>
+<p>可以将&lt;STYLE&gt;中的样式提取出来，另外取名为“example.css”，放在HTML文件同级目录下。然后在&lt;HEAD&gt;中使用&lt;LINK&gt;标签引入样式文件：<br>&lt;LINK type&#x3D;”text&#x2F;css” rel&#x3D;”stylesheet” href&#x3D;”example.css”&gt;<br>rel属性的值为“stylesheet”表示引用样式表。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">  <span class="selector-tag">P</span> &#123;</span><br><span class="line">    <span class="attribute">font-size</span>: <span class="number">16px</span>;</span><br><span class="line">    <span class="attribute">color</span>: <span class="number">#333</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">h1</span>,<span class="selector-tag">h2</span> &#123;</span><br><span class="line">    <span class="attribute">font-size</span>: <span class="number">16px</span>;</span><br><span class="line">    <span class="attribute">color</span>: <span class="number">#333</span>;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+
  
       <!-- reward -->
       
@@ -202,7 +240,7 @@
     <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://example.com/2024/07/28/First-Blog/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://example.com/2024/07/29/CSS%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AF%86/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -213,19 +251,10 @@
    
   <nav class="article-nav">
     
-      <a href="/2024/07/29/CSS%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AF%86/" class="article-nav-link">
-        <strong class="article-nav-caption">上一篇</strong>
-        <div class="article-nav-title">
-          
-            CSS基本知识
-          
-        </div>
-      </a>
     
-    
-      <a href="/2024/07/25/hello-world/" class="article-nav-link">
+      <a href="/2024/07/28/First-Blog/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">Hello World</div>
+        <div class="article-nav-title">First Blog</div>
       </a>
     
   </nav>
