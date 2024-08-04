@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+
+
+<html lang="zh-CN">
+  
+
+    <head>
+      <meta charset="utf-8" />
+        
+      <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1"
+      />
+      <title>php学习笔记三 |  欢迎你</title>
+  <meta name="generator" content="hexo-theme-ayer">
+      
+      <link rel="shortcut icon" href="/favicon.ico" />
+       
+<link rel="stylesheet" href="/dist/main.css">
+
+      
+<link rel="stylesheet" href="/css/fonts/remixicon.css">
+
+      
+<link rel="stylesheet" href="/css/custom.css">
+ 
+      <script src="https://cdn.staticfile.org/pace/1.2.4/pace.min.js"></script>
+       
+ 
+
+      <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-bulma@5.0.1/bulma.min.css"
+      />
+      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.min.js"></script>
+
+      <!-- mermaid -->
+      
+      <style>
+        .swal2-styled.swal2-confirm {
+          font-size: 1.6rem;
+        }
+      </style>
+    </head>
+  </html>
+</html>
+
+
+<body>
+  <div id="app">
+    
+      
+    <main class="content on">
+      <section class="outer">
+  <article
+  id="post-php学习笔记三"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  php学习笔记三
+</h1>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2024/08/05/php%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B8%89/" class="article-date">
+  <time datetime="2024-08-04T16:49:16.000Z" itemprop="datePublished">2024-08-05</time>
+</a>   
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> 字数统计:</span>
+            <span class="post-count">3.1k</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> 阅读时长≈</span>
+            <span class="post-count">14 分钟</span>
+        </span>
+    </span>
+</div>
+ 
+    </div>
+      
+    <div class="tocbot"></div>
+
+
+
+
+  
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h1 id="4-类与对象"><a href="#4-类与对象" class="headerlink" title="4. 类与对象"></a>4. 类与对象</h1><p>模块被组织成了一个个拥有属性和方法的对象————</p>
+<blockquote>
+<ol>
+<li>方法是对象所做的动作，作为函数。</li>
+<li>属性是对象的特征，作为变量。</li>
+</ol>
+</blockquote>
+<p>PHP5的对象模型是单重继承的，限制访问的，可以重载的，其将对象看成是与任何其他数据类型不同的类型，通过引用来传递。</p>
+<h2 id="4-1-对象的创建和使用："><a href="#4-1-对象的创建和使用：" class="headerlink" title="4.1 对象的创建和使用："></a>4.1 对象的创建和使用：</h2><p>类是一种类型，是实际变量的蓝图；而对象是类的实例，是实际变量，所以说，<EM>要发挥类的功能必须通过对象。</EM></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">// 定义一个类</span><br><span class="line">class Person &#123;</span><br><span class="line">    //成员声明，变量也可以有默认值，但不能是表达式。</span><br><span class="line">    public $name;</span><br><span class="line">    protected $gender; //只能被本类和子类访问。</span><br><span class="line">    private $salary;   //只能被本类访问。</span><br><span class="line">    public $age;</span><br><span class="line">    // 方法不要以两个_开头（魔术方法），$this作为伪变量，可以理解为“当前变量的”</span><br><span class="line">    public function sayHello() &#123;</span><br><span class="line">        echo &quot;Hello, my name is &quot;.$this-&gt;name.&quot; and I am &quot;.$this-&gt;age.&quot; years old.&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">// 创用new语句创建一个对象，实例化Person类</span><br><span class="line">$person1 = new Person();  </span><br><span class="line">/*也可以这样写：</span><br><span class="line">$class_name= &#x27;Person&#x27;;</span><br><span class="line">$person1 = new $class_name();  </span><br><span class="line">*/</span><br><span class="line">$person1-&gt;name = &quot;John&quot;;</span><br><span class="line">$person1-&gt;age = 25;</span><br><span class="line"></span><br><span class="line">//访问属性和方法</span><br><span class="line">echo $person1-&gt;name; // John</span><br><span class="line">echo $person1-&gt;age; // 25</span><br><span class="line">$person1-&gt;sayHello(); // Hello, my name is John and I am 25 years old.</span><br></pre></td></tr></table></figure>
+
+<p>并非类所有的方法都可以被对象调用，只有public修饰的属性和方法才可以被外部访问，<br>private只能被类内部访问。</p>
+<h2 id="4-2-复制对象："><a href="#4-2-复制对象：" class="headerlink" title="4.2 复制对象："></a>4.2 复制对象：</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;?PHP</span><br><span class="line">$myObj = new Person();</span><br><span class="line">$yourObj = $myObj;    //引用传递，两个对象名字指向同一个对象实例。</span><br><span class="line"></span><br><span class="line">$myObj = new Person();</span><br><span class="line">$yourObj = clone $myObj;    //复制对象，两个对象名字指向不同的对象实例。</span><br><span class="line"></span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="4-3-对象比较："><a href="#4-3-对象比较：" class="headerlink" title="4.3 对象比较："></a>4.3 对象比较：</h2><p>PHP5中，对象比较只有两个等号和三个等号：</p>
+<ul>
+<li>两个等号&#x3D;&#x3D;： 两个对象是同一个类的实例，并且它们有相同的属性值。</li>
+<li>三个等号&#x3D;&#x3D;&#x3D;： 两个对象是同一个类的实例，并且它们有相同的属性值和类型。</li>
+</ul>
+<h2 id="4-4-自动加载对象"><a href="#4-4-自动加载对象" class="headerlink" title="4.4 自动加载对象"></a>4.4 自动加载对象</h2><p>PHP5中，可以使用__autoload()方法来实现自动加载对象。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">//Person.php文件</span><br><span class="line">class Person &#123;</span><br><span class="line">    function __construct() &#123;</span><br><span class="line">        ECHO &quot;I am being created&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">//autoloader.php文件</span><br><span class="line">&lt;?php</span><br><span class="line">function __autoload($class_name) &#123;</span><br><span class="line">    require_once $class_name . &#x27;.php&#x27;;</span><br><span class="line">&#125;</span><br><span class="line">//自动调用__autoload()函数,包含Person.php文件</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+
+<p>修饰方法的关键词：final，</p>
+<ul>
+<li>final修饰的方法不能被子类重写，只能被当前类重写。</li>
+<li>final修饰的类不能被继承。</li>
+</ul>
+<h2 id="4-5-范围解析操作符"><a href="#4-5-范围解析操作符" class="headerlink" title="4.5 范围解析操作符(::)"></a>4.5 范围解析操作符(::)</h2><p>范围解析操作符(::)用于在没有声明实例的情况下访问类中的函数或者基类中的函数和变量。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">class A &#123;</span><br><span class="line">    public $name = &quot;A&quot;;</span><br><span class="line">    public function setName($name) &#123;</span><br><span class="line">        $this-&gt;name = $name;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//</span><br><span class="line">$name = &#x27;chen&#x27;;</span><br><span class="line">A::setName($name);</span><br><span class="line">echo A::$name; //输出：A</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="4-6-静态成员"><a href="#4-6-静态成员" class="headerlink" title="4.6 静态成员"></a>4.6 静态成员</h2><p>静态成员是指在类中定义的变量和方法，不依赖于对象，可以被类自身调用，由所有类的实例共享。</p>
+<ol>
+<li>静态属性<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;?PHP</span><br><span class="line">class Person &#123;</span><br><span class="line">static $haircolor = &quot;black&quot;;</span><br><span class="line"></span><br><span class="line">function getHairColor() &#123;</span><br><span class="line">    return $this-&gt;haircolor;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">$hair_color = Person::$haircolor;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure></li>
+<li>静态方法<br>静态方法可以完全访问类的属性（不管限定语），但不存在$this指针。<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&lt;?PHP</span><br><span class="line">class A &#123;</span><br><span class="line">function foo() &#123;</span><br><span class="line">    if(isset($this))&#123;</span><br><span class="line">        echo &#x27;$this 指向 (&#x27;;</span><br><span class="line">        echo get_class($this); </span><br><span class="line">        echo &#x27;) 对象&#x27;;</span><br><span class="line">        echo &#x27;&lt;br&gt;&#x27;;</span><br><span class="line">    &#125;</span><br><span class="line">    else&#123;</span><br><span class="line">        echo &#x27;$this 未指向对象&#x27;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">static function bar() &#123;</span><br><span class="line">    if(isset($this))&#123;</span><br><span class="line">        echo &#x27;$this 指向 (&#x27;;</span><br><span class="line">        echo get_class($this); </span><br><span class="line">        echo &#x27;) 对象&#x27;;</span><br><span class="line">        echo &#x27;&lt;br&gt;&#x27;;</span><br><span class="line">    &#125;</span><br><span class="line">    else&#123;</span><br><span class="line">        echo &#x27;$this 未指向对象&#x27;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class B </span><br><span class="line">&#123;</span><br><span class="line">   function foo()&#123;</span><br><span class="line">       A::foo();</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   function bar()&#123;</span><br><span class="line">       A::bar();</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">$a = new A();</span><br><span class="line">$b = new B();</span><br><span class="line"></span><br><span class="line">echo &#x27;静态调用方法&#x27;;</span><br><span class="line">echo &#x27;&lt;br&gt;&#x27;;</span><br><span class="line">$a-&gt;foo();</span><br><span class="line">A::foo();//对于非静态方法，没有创建实例，哪里来的this？</span><br><span class="line">$b-&gt;foo();</span><br><span class="line">B::foo();//对于非静态方法，没有创建实例，哪里来的this？</span><br><span class="line"></span><br><span class="line">echo &#x27;静态方法&#x27;;//静态方法就不会有$this</span><br><span class="line">echo &#x27;&lt;br&gt;&#x27;;</span><br><span class="line">$a-&gt;bar();</span><br><span class="line">A::bar();</span><br><span class="line">$b-&gt;bar();</span><br><span class="line">B::bar();</span><br><span class="line">?&gt;</span><br><span class="line">//指向A,未定义，指向B,未定义</span><br><span class="line">//四个未定义</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h2 id="4-7-继承"><a href="#4-7-继承" class="headerlink" title="4.7 继承"></a>4.7 继承</h2><p>   一个类可以继承另一个类，继承的类称为父类（基类），被继承的类称为子类（派类）。<br>派生类包含基类的所有属性和方法，可以加上其他属性和方法，也可以覆写基类的方法和属性。（只多不少）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">/*使用extends关键字来继承Person类，获得了新属性和方法</span><br><span class="line">如果说覆写属性和方法，只要重新定义一遍就可以了</span><br><span class="line">*/</span><br><span class="line">class Student extends Person &#123;</span><br><span class="line">public $class;</span><br><span class="line"></span><br><span class="line">public function setClass($class) &#123;</span><br><span class="line">    $this-&gt;class = $class;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//访问基类的成员--使用parent关键字</span><br><span class="line">class A&#123;</span><br><span class="line">    function example()&#123;</span><br><span class="line">        echo &#x27;A::example()&#x27;.&#x27;&lt;br&gt;&#x27;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class B extends A&#123;</span><br><span class="line">    function example()&#123;</span><br><span class="line">        echo &#x27;B::example(),他覆写了example()&#x27;.&#x27;&lt;br&gt;&#x27;;</span><br><span class="line">        echo &#x27;调用父类example()&#x27;.&#x27;&lt;br&gt;&#x27;;</span><br><span class="line">        parent::example();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">$a = new A();</span><br><span class="line">$b = new B();</span><br><span class="line"></span><br><span class="line">$a-&gt;example();</span><br><span class="line">echo &#x27;&lt;br&gt;&lt;br&gt;&lt;br&gt;&#x27;;</span><br><span class="line">$b-&gt;example();</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="4-8-抽象类和抽象方法"><a href="#4-8-抽象类和抽象方法" class="headerlink" title="4.8 抽象类和抽象方法"></a>4.8 抽象类和抽象方法</h2><p>抽象方法在一个类中声明，在一个类中声明（没有代码），在该类的子类中实现，看作子类中一般方法的占位符（占地方但没有作用）。<br>如果类中存在抽象方法，那么该类必须被声明为抽象类，抽象类不能实例化，只能被继承后被实例化。（作用类似于模板）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">abstract class Shape&#123;</span><br><span class="line">public $x;</span><br><span class="line">public $y;</span><br><span class="line">//抽象方法不能用private修饰，那样做的话，抽象方法不能被子类访问。</span><br><span class="line">abstract function countArea();</span><br><span class="line"></span><br><span class="line">//普通方法</span><br><span class="line">function setPosition($x,$y)&#123;</span><br><span class="line">    $this-&gt;x = $x;</span><br><span class="line">    $this-&gt;y = $y;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class Square extends Shape&#123;</span><br><span class="line">    $area = $width * $height;</span><br><span class="line">    retrun $area;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//$square = new Square(); 合法</span><br><span class="line">//$someShape = new Shape(); 非法</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="4-9-接口（interface和implements）"><a href="#4-9-接口（interface和implements）" class="headerlink" title="4.9 接口（interface和implements）"></a>4.9 接口（interface和implements）</h2><p>接口是抽象类，只有抽象方法而没有普通方法。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">interface Shape&#123;//可以用interface代替抽象类</span><br><span class="line">     function countArea();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class Square extends Shape&#123;//可以用implements代替entends</span><br><span class="line">    public $length;</span><br><span class="line"></span><br><span class="line">    function countArea()&#123;</span><br><span class="line">    $area = $length * $length;</span><br><span class="line">    return $area;</span><br><span class="line">    &#125;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="4-10-构造函数（-construct）和析构函数（-destruct）"><a href="#4-10-构造函数（-construct）和析构函数（-destruct）" class="headerlink" title="4.10 构造函数（__construct）和析构函数（__destruct）"></a>4.10 构造函数（__construct）和析构函数（__destruct）</h2><p>构造函数是类的构造函数，在创建对象时自动调用，用来对对象进行初始化。<br>析构函数是类的析构函数，在对象被销毁时自动调用，用来释放资源。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">class Person &#123;</span><br><span class="line">    public $age;</span><br><span class="line">    public $gender;</span><br><span class="line">    function __construct($age,$gender)&#123;</span><br><span class="line">        $this-&gt;age = $age;</span><br><span class="line">        $this-&gt;gender = $gender;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">//实例化对象并构造函数传递参数</span><br><span class="line">$bill = new Person(25,&quot;male&quot;);</span><br><span class="line">$lily = new Person(23,&quot;female&quot;);</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+<p>派生类的对象要执行基类的构造函数，必须在派生类的构造函数中显式调用：parent::__construct;</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">class Person&#123;</span><br><span class="line">    public $age;</span><br><span class="line">    public $gender;</span><br><span class="line">    function __construct($age,$gender)&#123;</span><br><span class="line">        $this-&gt;age = $age;</span><br><span class="line">        $this-&gt;gender = $gender;</span><br><span class="line">    &#125;</span><br><span class="line">    function __destruct()&#123;</span><br><span class="line">        echo &quot;Person对象被销毁&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class Student extends Person&#123;</span><br><span class="line">public $name;</span><br><span class="line"></span><br><span class="line">function __construct($age,$gender,$name)&#123;</span><br><span class="line">    $this-&gt;name = $name;</span><br><span class="line">    parent::__construct($age,$gender);</span><br><span class="line">    echo &#x27;显式调用基类的构造函数：&lt;br&gt;&#x27;;</span><br><span class="line">    echo &#x27;age: &#x27;.$this-&gt;age.&#x27;&lt;br&gt;&#x27;;</span><br><span class="line">    echo &#x27;gender: &#x27;.$this-&gt;gender.&#x27;&lt;br&gt;&#x27;;</span><br><span class="line">    echo &#x27;name: &#x27;.$this-&gt;name.&#x27;&lt;br&gt;&#x27;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">$bill = new Student(25,&quot;male&quot;,&quot;Bill&quot;);</span><br><span class="line">echo &#x27;&lt;br&gt;&lt;br&gt;&lt;br&gt;&#x27;;</span><br><span class="line"></span><br><span class="line">unset($bill); //销毁对象</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="4-11-访问控制"><a href="#4-11-访问控制" class="headerlink" title="4.11 访问控制"></a>4.11 访问控制</h2><p>private属性也可以被外部代码共享：定义了一对public方法（get和set），这样就可以提取出private属性的值。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">class Person &#123;</span><br><span class="line">private $name;</span><br><span class="line">private $age;</span><br><span class="line"></span><br><span class="line">public functiuon __construct($name)&#123;</span><br><span class="line">    $this-&gt;name = $name;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public function setAge($age)&#123;</span><br><span class="line">    $this-&gt;age = intval($age);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public function getAge()&#123;</span><br><span class="line">    return $this-&gt;age;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+
+<p>一个子类可以通过覆写父类方法来改变方法的访问方式，这里有一些限制：</p>
+<blockquote>
+<ul>
+<li>public只能改为public</li>
+<li>protected可以改为public或者protected</li>
+<li>private不能被修改</li>
+<li>final关键字只能用于方法，该方法在子类中不会被覆写，但final不能用于属性。</li>
+<li>php的绑定问题：<br>在编程过程中调用一个父类和子类中都存在的方法或访问一个属性，PHP会先判断实例属于哪种对象类型，再调用相应的类中的方法和属性。</li>
+</ul>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">class Person&#123;</span><br><span class="line">    private $private_name = &#x27;private:person&#x27;;</span><br><span class="line">    protected $protected_name = &#x27;protected:person&#x27;;</span><br><span class="line">    private function private_indentify()&#123;</span><br><span class="line">        echo &#x27;private:这是基类&#x27;. &#x27;&lt;br&gt;&#x27;;</span><br><span class="line">    &#125;</span><br><span class="line">    protected function protected_indentify()&#123;</span><br><span class="line">        echo &#x27;protected:这是基类&#x27;. &#x27;&lt;br&gt;&#x27;;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    // 使用公有方法输出结果</span><br><span class="line">    public function printPrivate()&#123;</span><br><span class="line">        echo $this-&gt;private_name. &#x27;&lt;br&gt;&#x27;;</span><br><span class="line">        $this-&gt;private_indentify(). &#x27;&lt;br&gt;&#x27;;</span><br><span class="line">    &#125;</span><br><span class="line">    public function printProtected()&#123;</span><br><span class="line">        echo $this-&gt;protected_name. &#x27;&lt;br&gt;&#x27;;</span><br><span class="line">        $this-&gt;protected_indentify(). &#x27;&lt;br&gt;&#x27;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class Student extends Person&#123;</span><br><span class="line">    // 不能覆写基类中的private_name</span><br><span class="line">    private $private_name = &#x27;private:student&#x27;;</span><br><span class="line">    // 覆写基类中的$protected_name</span><br><span class="line">    protected $protected_name = &#x27;protected:student&#x27;;</span><br><span class="line"></span><br><span class="line">    // 不能覆写基类中的private_indentify</span><br><span class="line">    private function private_indentify()&#123;</span><br><span class="line">        echo &#x27;private:这是派生类&#x27;. &#x27;&lt;br&gt;&#x27;;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    // 覆写基类中的protected_indentify</span><br><span class="line">    protected function protected_indentify()&#123;</span><br><span class="line">        echo &#x27;protected:这是派生类&#x27;. &#x27;&lt;br&gt;&#x27;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">$bill = new Student();</span><br><span class="line">//基类中的private成员与基类的方法绑定</span><br><span class="line">$bill-&gt;printPrivate(). &#x27;&lt;br&gt;&#x27;;</span><br><span class="line">//派生类中的protected成员与基类的方法绑定</span><br><span class="line">// protected成员被派生类覆写</span><br><span class="line">$bill-&gt;printProtected(). &#x27;&lt;br&gt;&#x27;;</span><br><span class="line"></span><br><span class="line">/*output：</span><br><span class="line">private:person</span><br><span class="line">private:这是基类</span><br><span class="line">protected:student</span><br><span class="line">protected:这是派生类</span><br><span class="line">*/</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="4-12-重载"><a href="#4-12-重载" class="headerlink" title="4.12 重载"></a>4.12 重载</h2><h3 id="4-12-1-属性重载"><a href="#4-12-1-属性重载" class="headerlink" title="4.12.1 属性重载"></a>4.12.1 属性重载</h3><p>属性重载通过以下方法实现：</p>
+<blockquote>
+<ol>
+<li>__get()方法用于获取属性的值</li>
+<li>__set()方法用于设置属性的值。</li>
+<li>__isset()方法用于判断属性是否设置。</li>
+<li>__unset()方法用于删除属性。</li>
+</ol>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">class Overload &#123;</span><br><span class="line">    public $n = &#x27;public&#x27;;</span><br><span class="line">    private $properties = array();</span><br><span class="line">    </span><br><span class="line">    function __get($property_name)&#123;</span><br><span class="line">        if(isset($this-&gt;properties[$property_name]))&#123;</span><br><span class="line">            return $this-&gt;properties[$property_name];</span><br><span class="line">        &#125;</span><br><span class="line">        else&#123;</span><br><span class="line">            return (NULL);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function __set($property_name,$value)&#123;</span><br><span class="line">        $this-&gt;properties[$property_name] = $value;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    function __isset($property_name)&#123;</span><br><span class="line">        echo &quot;Checking if $property_name is set\n&quot;;</span><br><span class="line">        return isset($this-&gt;properties[$property_name]);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function __unset($property_name)&#123;</span><br><span class="line">        echo &quot;Unsetting $property_name\n&quot;;</span><br><span class="line">        unset($this-&gt;properties[$property_name]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">$obj = new Overload();</span><br><span class="line">//激活__set()方法</span><br><span class="line">$obj-&gt;test = &#x27;Content&#x27;;</span><br><span class="line">//激活__get()方法</span><br><span class="line">echo &#x27;$obj-&gt;test: &#x27;.$obj-&gt;test.&#x27;&lt;br&gt;&#x27;;</span><br><span class="line">//激活__isset()方法</span><br><span class="line">echo &#x27;&lt;pre&gt;&#x27;.var_dump(isset($obj-&gt;test)).&#x27;&lt;/pre&gt;&#x27;;</span><br><span class="line">//激活__unset()方法</span><br><span class="line">unset($obj-&gt;test);</span><br><span class="line">echo &#x27;&lt;pre&gt;&#x27;.var_dump(isset($obj-&gt;test)).&#x27;&lt;/pre&gt;&#x27;;</span><br><span class="line">//&#x27;n&#x27;是公有属性，PHP 对于公有属性的访问是直接的，不需要通过 __get() 或 __isset() 方法。</span><br><span class="line">__isset() 方法通常用于检查动态属性的设置情况，而不是普通的公有属性。</span><br><span class="line">echo &#x27;&lt;pre&gt;&#x27;.var_dump(isset($obj-&gt;n)).&#x27;&lt;/pre&gt;&#x27;;</span><br><span class="line">echo &#x27;&lt;pre&gt;&#x27;.var_dump($obj).&#x27;&lt;/pre&gt;&#x27;;</span><br><span class="line">/*输出：</span><br><span class="line">$obj-&gt;test: Content</span><br><span class="line">Checking if test is set bool(true)</span><br><span class="line">Unsetting test Checking if test is set bool(false)</span><br><span class="line">bool(true)</span><br><span class="line">object(Overload)#1 (2) &#123; [&quot;n&quot;]=&gt; string(6) &quot;public&quot; [&quot;properties&quot;:&quot;Overload&quot;:private]=&gt; array(0) &#123; &#125; &#125;</span><br><span class="line">*/ </span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+<p>在PHP中，魔术方法 __isset() 用于检查对象的属性是否已设置（即是否存在于对象中）。然而，对于公有属性（public properties），这些属性的访问是直接通过对象实例来进行的，而不会触发 __get() 或 __isset() 方法。<br>相比之下，当你访问一个不存在的动态属性（如 $obj-&gt;test），由于该属性并不存在，就会激活 __get() 和 __isset() 方法来处理这种情况。</p>
+<h3 id="4-12-2-方法重载-call"><a href="#4-12-2-方法重载-call" class="headerlink" title="4.12.2 方法重载(__call)"></a>4.12.2 方法重载(__call)</h3><p>当你调用未定义方法，方法名和接收到的参数将会传给__call()方法。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">class Caller&#123;</span><br><span class="line">    private $x = array(&#x27;a&#x27;,&#x27;test&#x27;,3);</span><br><span class="line"></span><br><span class="line">    public function __call($m,$a)&#123;//function __call(string $name, array $arguments)</span><br><span class="line">        echo &#x27;Method&#x27;.$m.&#x27;called:&#x27;;</span><br><span class="line">        var_dump($a);</span><br><span class="line">        echo&#x27;&lt;h1&gt;还可以执行其他代码；&#x27;;</span><br><span class="line">        return $this-&gt;x;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">$foo = new Caller();</span><br><span class="line">$a = $foo-&gt;test(1,&quot;2&quot;,3.4,true);</span><br><span class="line">var_dump($a);</span><br><span class="line">/*</span><br><span class="line">Methodtestcalled:array(4) </span><br><span class="line">&#123; [0]=&gt; int(1) [1]=&gt; string(1) &quot;2&quot; [2]=&gt; float(3.4) [3]=&gt; bool(true) &#125;</span><br><span class="line">还可以执行其他代码；</span><br><span class="line">array(3) &#123; [0]=&gt; string(1) &quot;a&quot; [1]=&gt; string(4) &quot;test&quot; [2]=&gt; int(3) &#125;</span><br><span class="line">*/ </span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-13-序列化与反序列化serialize（）、unserialize（）"><a href="#4-13-序列化与反序列化serialize（）、unserialize（）" class="headerlink" title="4.13 序列化与反序列化serialize（）、unserialize（）"></a>4.13 序列化与反序列化serialize（）、unserialize（）</h3><p>序列化是指将一个对象转换为一个字符串，反序列化是指将一个字符串转换为一个对象。<br>当一个对象被序列化，php会调用__sleep方法（如果存在），返回一个包含需要序列化的属性的数组。<br>被序列化的话，会调用__wakeup方法（如果存在），将属性恢复到对象中。二者都不接受参数的输入。</p>
+<p>具体的情况会列专题进行讲解。</p>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <div class="declare">
+      <ul class="post-copyright">
+        <li>
+          <i class="ri-copyright-line"></i>
+          <strong>版权声明： </strong>
+          
+          本博客所有文章除特别声明外，著作权归作者所有。转载请注明出处！
+          
+        </li>
+      </ul>
+    </div>
+    
+    <footer class="article-footer">
+       
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://example.com/2024/08/05/php%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B8%89/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>  
+    </footer>
+  </div>
+
+   
+  <nav class="article-nav">
+    
+    
+      <a href="/2024/08/05/php%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%BA%8C/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">php学习笔记二</div>
+      </a>
+    
+  </nav>
+
+  
+   
+  
+   
+    <script src="https://cdn.staticfile.org/twikoo/1.4.18/twikoo.all.min.js"></script>
+    <div id="twikoo" class="twikoo"></div>
+    <script>
+        twikoo.init({
+            envId: ""
+        })
+    </script>
+ 
+</article>
+
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul>
+      <li>
+        Copyrights &copy;
+        2015-2024
+        <i class="ri-heart-fill heart_icon"></i> HRISTO
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        <span>
+  <span><i class="ri-user-3-fill"></i>访问人数:<span id="busuanzi_value_site_uv"></span></span>
+  <span class="division">|</span>
+  <span><i class="ri-eye-fill"></i>浏览次数:<span id="busuanzi_value_page_pv"></span></span>
+</span>
+        
+      </li>
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      <li>
+        <!-- cnzz统计 -->
+        
+        <script type="text/javascript" src='https://s9.cnzz.com/z_stat.php?id=1278069914&amp;web_id=1278069914'></script>
+        
+      </li>
+    </ul>
+  </div>
+</footer>    
+    </main>
+    <div class="float_btns">
+      <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+    </div>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/ayer-side.svg" alt="欢迎你"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">主页</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">归档</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">分类</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">标签</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/2019/about">关于我</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="搜索">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯咖啡吧~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/alipay.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/wechat.jpg">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+    
+<script src="/js/jquery-3.6.0.min.js"></script>
+ 
+<script src="/js/lazyload.min.js"></script>
+
+<!-- Tocbot -->
+ 
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: ".tocbot",
+    contentSelector: ".article-entry",
+    headingSelector: "h1, h2, h3, h4, h5, h6",
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: "main",
+    positionFixedSelector: ".tocbot",
+    positionFixedClass: "is-position-fixed",
+    fixedSidebarOffset: "auto",
+  });
+</script>
+
+<script src="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.js"></script>
+<link
+  rel="stylesheet"
+  href="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.css"
+/>
+<script src="https://cdn.staticfile.org/justifiedGallery/3.8.1/js/jquery.justifiedGallery.min.js"></script>
+
+<script src="/dist/main.js"></script>
+
+<!-- ImageViewer -->
+ <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/default-skin/default-skin.min.css">
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.js"></script>
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script> 
+<!-- MathJax -->
+
+<!-- Katex -->
+
+<!-- busuanzi  -->
+ 
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+ 
+<!-- ClickLove -->
+
+<!-- ClickBoom1 -->
+
+<!-- ClickBoom2 -->
+
+<!-- CodeCopy -->
+ 
+<link rel="stylesheet" href="/css/clipboard.css">
+ <script src="https://cdn.staticfile.org/clipboard.js/2.0.10/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="ri-file-copy-2-line"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-checkbox-circle-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPIED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-checkbox-circle-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-time-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-time-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+ 
+<!-- CanvasBackground -->
+
+<script>
+  if (window.mermaid) {
+    mermaid.initialize({ theme: "forest" });
+  }
+</script>
+
+
+    
+    
+
+  </div>
+</body>
+
+</html>
